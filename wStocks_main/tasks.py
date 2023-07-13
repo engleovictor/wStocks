@@ -5,7 +5,7 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
 def get_stock_price(ticker: str) -> float:
-    with open('api_key.json', 'r') as api_key_json:
+    with open('api_key', 'r') as api_key_json:
         apikey = json.load(api_key_json)['apikey']    
     
     params = {
@@ -22,7 +22,7 @@ def get_stock_price(ticker: str) -> float:
 
 
 def send_email(to_data: dict):
-    with open('root_email_data.json', 'r') as root_email_data:
+    with open('email_data', 'r') as root_email_data:
         root_data = json.load(root_email_data)
 
     message = MIMEMultipart()

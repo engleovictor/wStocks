@@ -1,0 +1,27 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>wStocks - Entrar</title>
+  <link rel="stylesheet" href="{% static 'style.css'%}">
+</head>
+<body>
+  <div class="container">
+    {% include 'sidebar.html' %}
+    {% if mode %}
+    <form method="post">
+      {% csrf_token %}
+      <h1>Entrar</h1>
+      <label for="name">Nome:</label>
+      <input type="text" id="name" name="name">
+      <label for="email">Email:</label>
+      <input type="text" id="email" name="email">
+      <input type="submit" value="Entrar">
+    </form>
+    {% else %} 
+    <h1 class="bv">Olá {{ username }}</h1>
+    {% endif %}
+  </div>
+</body>
+</html>

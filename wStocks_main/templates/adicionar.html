@@ -1,0 +1,42 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>wStocks - Adicionar</title>
+  <link rel="stylesheet" href="{% static 'style.css'%}">
+</head>
+<body>
+  <div class="container">
+    {% include 'sidebar.html' %}
+    {% if user %}
+    <form method="post">
+      {% csrf_token %}
+      <label for="ticker">Ticker:</label>
+      <input type="text" id="ticker" name="ticker">
+
+      <label for="upper-limit">Preço Limite Superior:</label>
+      <input type="text" id="upper-limit" name="upper-limit">
+
+      <label for="lower-limit">Preço Limite Inferior:</label>
+      <input type="text" id="lower-limit" name="lower-limit">
+
+      <label for="interval">Intervalo:</label>
+      <select id="interval" name="interval">
+        <option value="NONE">Selecione</option>
+        <option value="15">15 minutos</option>
+        <option value="30">30 minutos</option>
+        <option value="60">1 hora</option>
+      </select>
+
+      <input type="submit" value="Enviar">
+      {% if non_created %}
+      <p> Não foi criado, selecione o período. </p>
+      {% endif %}
+      {% else %}
+      <h1 class="bv"> Você deve <a href="{% url 'entrar' %}">entrar</a> para poder adicionar </h1>
+      {% endif %}
+    </form>
+    </div>
+</body>
+</html>

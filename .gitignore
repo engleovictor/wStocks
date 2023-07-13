@@ -1,0 +1,4 @@
+*.json
+*.sqlite3
+*/__pycache__
+wStocks_main/migrations/__pycache__

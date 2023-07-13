@@ -1,0 +1,95 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tabelas de Stocks</title>
+  <link rel="stylesheet" href="{% static 'style.css'%}">
+</head>
+<body>
+
+  {% include 'sidebar.html' %}
+  <div class="centered-div">
+  <h1>15 Minutos</h1>
+  {% if stock_watcher_15 %}
+    <table>
+      <tr>
+        <th>Ticker</th>
+        <th>Limite Inferior</th>
+        <th>Limite Superior</th>
+        <th>Excluir</th>
+      </tr>
+      {% for stock in stock_watcher_15 %}
+        <tr>
+          <form method="post">
+          {% csrf_token %}
+          <td>{{ stock.ticker }}</td>
+          <td>{{ stock.buy_price }}</td>
+          <td>{{ stock.sell_price }}</td>
+          <input type="hidden" name="ticker" value="{{ stock.ticker }}">
+          <input type="hidden" name="time" value="15">
+          <td><input type="submit" value="Excluir"></td>
+          </form>
+        </tr>
+      {% endfor %}
+    </table>
+  {% else %}
+    <p>Nada cadastrado</p>
+  {% endif %}
+
+  <h1>30 minutos</h1>
+  {% if stock_watcher_30 %}
+    <table>
+      <tr>
+        <th>Ticker</th>
+        <th>Limite Inferior</th>
+        <th>Limite Superior</th>
+        <th>Excluir</th>
+      </tr>
+      {% for stock in stock_watcher_30 %}
+      <tr>
+        <form method="post">
+        {% csrf_token %}
+        <td>{{ stock.ticker }}</td>
+        <td>{{ stock.buy_price }}</td>
+        <td>{{ stock.sell_price }}</td>
+        <input type="hidden" name="ticker" value="{{ stock.ticker }}">
+        <input type="hidden" name="time" value="30">
+        <td><input type="submit" value="Excluir"></td>
+        </form>
+      </tr>
+      {% endfor %}
+    </table>
+  {% else %}
+    <p>Nada cadastrado</p>
+  {% endif %}
+
+  <h1>1 hora</h1>
+  {% if stock_watcher_60 %}
+    <table>
+      <tr>
+        <th>Ticker</th>
+        <th>Limite Inferior</th>
+        <th>Limite Superior</th>
+        <th>Excluir</th>
+      </tr>
+      {% for stock in stock_watcher_60 %}
+      <tr>
+        <form method="post">
+        {% csrf_token %}
+        <td>{{ stock.ticker }}</td>
+        <td>{{ stock.buy_price }}</td>
+        <td>{{ stock.sell_price }}</td>
+        <input type="hidden" name="ticker" value="{{ stock.ticker }}">
+        <input type="hidden" name="time" value="60">
+        <td><input type="submit" value="Excluir"></td>
+        </form>
+      </tr>
+      {% endfor %}
+    </table>
+  {% else %}
+    <p>Nada cadastrado</p>
+  {% endif %}
+  </div>
+</body>
+</html>

@@ -1,0 +1,9 @@
+{% block sidebar %}
+{% load static %}
+
+<div class="sidebar">
+    <a href="{% url "adicionar" %}"><img class="sbicon" src="{% static 'images/sum.png' %}"></a>
+    <a href="{% url "editar" %}"><img class="sbicon" src="{% static 'images/editar.png' %}"></a>
+</div>
+
+{% endblock sidebar %}
